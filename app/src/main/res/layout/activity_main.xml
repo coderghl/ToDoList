@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="#CDCDCD">
+
+  <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical">
+      <!-- nav -->
+      <LinearLayout
+        android:id="@+id/nav"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginBottom="20dp"
+        android:background="#000"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginRight="10dp"
+          android:text="ToDoList"
+          android:textAllCaps="false"
+          android:textColor="#ccc"
+          android:textSize="22dp" />
+
+        <EditText
+          android:id="@+id/inputTodo"
+          android:layout_width="wrap_content"
+          android:layout_height="24dp"
+          android:layout_marginRight="10dp"
+          android:layout_weight="2"
+          android:background="@drawable/nav_edittext"
+          android:hint="Please add Todo"
+          android:maxLines="1"
+          android:paddingLeft="4dp"
+          android:textColor="#eee"
+          android:textColorHint="#525050"
+          android:textCursorDrawable="@drawable/nav_cursor"
+          android:textSize="14sp" />
+
+        <Button
+          android:id="@+id/upTodo"
+          style="@null"
+          android:layout_width="70dp"
+          android:layout_height="wrap_content"
+          android:background="@drawable/nav_button"
+          android:minHeight="26dp"
+          android:text="add"
+          android:textAllCaps="false" />
+
+      </LinearLayout>
+
+
+      <!-- undone -->
+      <LinearLayout
+        android:id="@+id/undoneListWrap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nav"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="10dp">
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="undone"
+            android:textColor="#000"
+            android:textSize="24sp" />
+
+          <TextView
+            android:id="@+id/countUndone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="0"
+            android:textColor="#000"
+            android:textSize="18sp" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/undoneListContent"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent" />
+      </LinearLayout>
+
+      <!-- done -->
+      <LinearLayout
+        android:id="@+id/doneListWrap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/undoneListWrap"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="10dp">
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="done"
+            android:textColor="#000"
+            android:textSize="24sp" />
+
+          <TextView
+            android:id="@+id/countDone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="0"
+            android:textColor="#000"
+            android:textSize="18sp" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/doneListContent"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent" />
+      </LinearLayout>
+    </LinearLayout>
+  </ScrollView>
+</RelativeLayout>
