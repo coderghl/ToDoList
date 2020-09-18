@@ -53,6 +53,7 @@ public class UndoneAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         countUndone.setText(String.valueOf(UnDoneList.size()));
       }
     });
+
     // 点击CheckBox
     ((itemWarp) holder).isDone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
       @Override
