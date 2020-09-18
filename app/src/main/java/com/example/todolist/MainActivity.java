@@ -15,7 +15,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -131,15 +135,19 @@ public class MainActivity extends AppCompatActivity {
 
   public void showDoneList() {
     try {
-      FileInputStream fis = openFileInput("Done.txt");
-      byte[] bytes = new byte[fis.available()];
-      fis.read(bytes);
-
-      String[] data = new String(bytes).split("|");
-      for (String datum : data) {
-        DoneAdapter.DoneList.add(datum);
+      Reader readr = new FileReader(DoneFile);
+      char[] chars = new char[1024];
+      int count = 0;
+      StringBuffer sb = new StringBuffer();
+      while ((count = readr.read(chars)) != -1) {
+        sb.append(new String(chars, 0, count));
+      }
+      String[] data = sb.toString().split("\\|");
+      for (String s : data) {
+        DoneAdapter.DoneList.add(s);
       }
       doneListContent.setAdapter(MainActivity.doneAdapter);
+      readr.close();
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -147,14 +155,19 @@ public class MainActivity extends AppCompatActivity {
 
   public void showUnDoneList() {
     try {
-      FileInputStream fis = openFileInput("UnDone.txt");
-      byte[] bytes = new byte[fis.available()];
-      fis.read(bytes);
-      String[] data = new String(bytes).split("|");
-      for (String datum : data) {
-        UndoneAdapter.UnDoneList.add(datum);
+      Reader readr = new FileReader(UnDoneFile);
+      char[] chars = new char[1024];
+      int count = 0;
+      StringBuffer sb = new StringBuffer();
+      while ((count = readr.read(chars)) != -1) {
+        sb.append(new String(chars, 0, count));
+      }
+      String[] data = sb.toString().split("\\|");
+      for (String s : data) {
+        UndoneAdapter.UnDoneList.add(s);
       }
       undoneListContent.setAdapter(MainActivity.undoneAdapter);
+      readr.close();
     } catch (IOException e) {
       e.printStackTrace();
     }
